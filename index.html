@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">ö
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"
+        integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+    <title>Elections Visualization</title>
+</head>
+
+<body>
+    <main class="container">
+        <h2 class="text-center my-2">Presidential Election Analysis</h2>
+        <h4 class="text-center my-3">Polling Stations for overall winner (left) &amp; Trend for all(right)</h4>
+        <div class="row mt-1">
+            <div class="col-6 pt-2">
+                <h4>Winner (Yoweri K. Museveni)</h4>
+                <h6 class="text-center">A histogram chart of H.E Y.Museveni % per district</h6>
+                <p>
+                    Typical polling station distribution in a district should follow
+                    a normal distribution. Irregularities will be likely in a district with:
+                <ul>
+                    <li>Skewed distributions with fat-left/right tails</li>
+                    <li>Extreme Kurtosis in a distribution.</li>
+                    <li>Alot of variance in a distribution</li>
+                </ul>
+                </p>
+                <form>
+                    <div class="form-group">
+                        <div class="d-flex">
+                            <div class="w-50">
+                                Select District
+                            </div>
+                            <div class="w-50">
+                                <select id="district" class="form-control">
+                                    <option value="2-010">Kabarole</option>
+                                    <option value="1-100">Kalungu</option>
+                                    <option value="4-115">Omoro</option>
+                                    <option value="2-015">Kasese</option>
+                                    <option value="1-024">Masaka</option>
+                                    <option value="2-034">Ntungamo</option>
+                                    <option value="3-039">Tororo</option>
+                                    <option value="1-045">Ssembabule</option>
+                                    <option value="3-060">Butaleja</option>
+                                    <option value="1-068">Mityana</option>
+                                    <option value="4-077">Maracha</option>
+                                    <option value="1-082">Buikwe</option>
+                                    <option value="2-084">Kyegegwa</option>
+                                    <option value="4-088">Alebtong</option>
+                                    <option value="2-092">Kiryandongo</option>
+                                    <option value="1-105">Lwengo</option>
+                                    <option value="2-109">Buhweju</option>
+                                    <option value="2-114">Kakumiro</option>
+                                    <option value="2-116">Rubanda</option>
+                                    <option value="3-124">Bugweri</option>
+                                    <option value="1-036">Rakai</option>
+                                    <option value="2-004">Bushenyi</option>
+                                    <option value="1-052">Wakiso</option>
+                                    <option value="4-005">Gulu</option>
+                                    <option value="4-081">Amudat</option>
+                                    <option value="2-009">Kabale</option>
+                                    <option value="3-097">Serere</option>
+                                    <option value="4-110">Nwoya</option>
+                                    <option value="4-111">Agago</option>
+                                    <option value="4-134">Karenga</option>
+                                    <option value="2-016">Kibaale</option>
+                                    <option value="2-018">Kisoro</option>
+                                    <option value="3-043">Katakwi</option>
+                                    <option value="2-048">Kyenjojo</option>
+                                    <option value="3-054">Kaberamaido</option>
+                                    <option value="4-057">Amolatar</option>
+                                    <option value="3-058">Amuria</option>
+                                    <option value="2-062">Isingiro</option>
+                                    <option value="4-063">Kaabong</option>
+                                    <option value="3-079">Bukedea</option>
+                                    <option value="3-008">Jinja</option>
+                                    <option value="1-091">Gomba</option>
+                                    <option value="3-094">Luuka</option>
+                                    <option value="3-104">Kween</option>
+                                    <option value="3-108">Ngora</option>
+                                    <option value="2-120">Rukiga</option>
+                                    <option value="4-123">Nabilatuk</option>
+                                    <option value="3-026">Mbale</option>
+                                    <option value="2-003">Bundibugyo</option>
+                                    <option value="2-055">Kanungu</option>
+                                    <option value="3-059">Bukwo</option>
+                                    <option value="4-071">Amuru</option>
+                                    <option value="4-086">Otuke</option>
+                                    <option value="3-089">Bulambuli</option>
+                                    <option value="1-093">Kyankwanzi</option>
+                                    <option value="1-099">Butambala</option>
+                                    <option value="4-107">Napak</option>
+                                    <option value="2-112">Rubirizi</option>
+                                    <option value="2-113">Kagadi</option>
+                                    <option value="1-011">Kalangala</option>
+                                    <option value="3-117">Namisindwa</option>
+                                    <option value="4-118">Pakwach</option>
+                                    <option value="4-126">Kwania</option>
+                                    <option value="2-131">Rwampara</option>
+                                    <option value="4-028">Moroto</option>
+                                    <option value="4-033">Nebbi</option>
+                                    <option value="3-035">Pallisa</option>
+                                    <option value="3-051">Sironko</option>
+                                    <option value="4-056">Nakapiripirit</option>
+                                    <option value="2-065">Kiruhura</option>
+                                    <option value="4-070">Abim</option>
+                                    <option value="3-075">Namutumba</option>
+                                    <option value="3-095">Namayingo</option>
+                                    <option value="3-102">Kibuku</option>
+                                    <option value="2-106">Mitooma</option>
+                                    <option value="1-125">Kassanda</option>
+                                    <option value="2-130">Kazo</option>
+                                    <option value="2-132">Kitagwenda</option>
+                                    <option value="3-013">Kamuli</option>
+                                    <option value="1-017">Kiboga</option>
+                                    <option value="4-019">Kitgum</option>
+                                    <option value="4-020">Kotido</option>
+                                    <option value="1-023">Luweero</option>
+                                    <option value="4-040">Adjumani</option>
+                                    <option value="1-044">Nakasongola</option>
+                                    <option value="1-047">Kayunga</option>
+                                    <option value="4-066">Koboko</option>
+                                    <option value="2-073">Buliisa</option>
+                                    <option value="1-080">Lyantonde</option>
+                                    <option value="3-083">Buyende</option>
+                                    <option value="3-119">Butebo</option>
+                                    <option value="1-121">Kyotera</option>
+                                    <option value="2-122">Bunyangabu</option>
+                                    <option value="1-012" selected="selected">Kampala</option>
+                                    <option value="2-128">Kikuube</option>
+                                    <option value="4-001">Apac</option>
+                                    <option value="4-133">Madi Okollo</option>
+                                    <option value="4-002">Arua</option>
+                                    <option value="3-021">Kumi</option>
+                                    <option value="2-025">Masindi</option>
+                                    <option value="2-027">Mbarara</option>
+                                    <option value="1-031">Mubende</option>
+                                    <option value="2-037">Rukungiri</option>
+                                    <option value="3-038">Soroti</option>
+                                    <option value="3-041">Bugiri</option>
+                                    <option value="3-049">Mayuge</option>
+                                    <option value="2-061">Ibanda</option>
+                                    <option value="3-064">Kaliro</option>
+                                    <option value="3-067">Manafwa</option>
+                                    <option value="3-007">Iganga</option>
+                                    <option value="2-096">Ntoroko</option>
+                                    <option value="2-101">Sheema</option>
+                                    <option value="4-103">Kole</option>
+                                    <option value="3-127">Kapelebyong</option>
+                                    <option value="4-129">Obongi</option>
+                                    <option value="3-014">Kapchorwa</option>
+                                    <option value="4-022">Lira</option>
+                                    <option value="4-029">Moyo</option>
+                                    <option value="1-030">Mpigi</option>
+                                    <option value="1-032">Mukono</option>
+                                    <option value="3-042">Busia</option>
+                                    <option value="2-046">Kamwenge</option>
+                                    <option value="4-050">Pader</option>
+                                    <option value="4-053">Yumbe</option>
+                                    <option value="2-006">Hoima</option>
+                                    <option value="1-069">Nakaseke</option>
+                                    <option value="3-072">Budaka</option>
+                                    <option value="4-074">Dokolo</option>
+                                    <option value="4-076">Oyam</option>
+                                    <option value="3-078">Bududa</option>
+                                    <option value="4-085">Lamwo</option>
+                                    <option value="4-087">Zombo</option>
+                                    <option value="1-090">Buvuma</option>
+                                    <option value="1-098">Bukomansimbi</option>
+                                    <option value="4-110">Nwoya</option>
+                                    <option value="2-131">Rwampara</option>
+                                    <option value="2-025">Masindi</option>
+                                    <option value="1-031">Mubende</option>
+                                    <option value="2-003">Bundibugyo</option>
+                                    <option value="1-032">Mukono</option>
+                                    <option value="4-033">Nebbi</option>
+                                    <option value="2-037">Rukungiri</option>
+                                    <option value="3-049">Mayuge</option>
+                                    <option value="2-006">Hoima</option>
+                                    <option value="3-064">Kaliro</option>
+                                    <option value="4-070">Abim</option>
+                                    <option value="3-007">Iganga</option>
+                                    <option value="2-073">Buliisa</option>
+                                    <option value="3-083">Buyende</option>
+                                    <option value="1-090">Buvuma</option>
+                                    <option value="3-095">Namayingo</option>
+                                    <option value="1-011">Kalangala</option>
+                                    <option value="3-119">Butebo</option>
+                                    <option value="2-120">Rukiga</option>
+                                    <option value="2-122">Bunyangabu</option>
+                                    <option value="2-128">Kikuube</option>
+                                    <option value="4-133">Madi Okollo</option>
+                                    <option value="2-016">Kibaale</option>
+                                    <option value="4-002">Arua</option>
+                                    <option value="4-040">Adjumani</option>
+                                    <option value="1-047">Kayunga</option>
+                                    <option value="2-084">Kyegegwa</option>
+                                    <option value="4-085">Lamwo</option>
+                                    <option value="4-123">Nabilatuk</option>
+                                    <option value="4-107">Napak</option>
+                                    <option value="3-124">Bugweri</option>
+                                    <option value="3-013">Kamuli</option>
+                                    <option value="4-134">Karenga</option>
+                                    <option value="4-022">Lira</option>
+                                    <option value="3-038">Soroti</option>
+                                    <option value="3-039">Tororo</option>
+                                    <option value="3-042">Busia</option>
+                                    <option value="2-048">Kyenjojo</option>
+                                    <option value="4-050">Pader</option>
+                                    <option value="1-052">Wakiso</option>
+                                    <option value="2-055">Kanungu</option>
+                                    <option value="4-057">Amolatar</option>
+                                    <option value="3-059">Bukwo</option>
+                                    <option value="2-062">Isingiro</option>
+                                    <option value="4-063">Kaabong</option>
+                                    <option value="3-067">Manafwa</option>
+                                    <option value="4-076">Oyam</option>
+                                    <option value="4-087">Zombo</option>
+                                    <option value="2-114">Kakumiro</option>
+                                    <option value="2-116">Rubanda</option>
+                                    <option value="3-117">Namisindwa</option>
+                                    <option value="4-126">Kwania</option>
+                                    <option value="3-127">Kapelebyong</option>
+                                    <option value="2-018">Kisoro</option>
+                                    <option value="3-021">Kumi</option>
+                                    <option value="4-029">Moyo</option>
+                                    <option value="4-053">Yumbe</option>
+                                    <option value="2-061">Ibanda</option>
+                                    <option value="4-071">Amuru</option>
+                                    <option value="1-091">Gomba</option>
+                                    <option value="2-009">Kabale</option>
+                                    <option value="1-100">Kalungu</option>
+                                    <option value="3-108">Ngora</option>
+                                    <option value="2-109">Buhweju</option>
+                                    <option value="2-112">Rubirizi</option>
+                                    <option value="2-113">Kagadi</option>
+                                    <option value="4-118">Pakwach</option>
+                                    <option value="2-130">Kazo</option>
+                                    <option value="3-014">Kapchorwa</option>
+                                    <option value="1-023">Luweero</option>
+                                    <option value="4-028">Moroto</option>
+                                    <option value="1-030">Mpigi</option>
+                                    <option value="1-036">Rakai</option>
+                                    <option value="1-044">Nakasongola</option>
+                                    <option value="4-074">Dokolo</option>
+                                    <option value="3-075">Namutumba</option>
+                                    <option value="3-078">Bududa</option>
+                                    <option value="1-080">Lyantonde</option>
+                                    <option value="1-082">Buikwe</option>
+                                    <option value="2-101">Sheema</option>
+                                    <option value="3-102">Kibuku</option>
+                                    <option value="3-104">Kween</option>
+                                    <option value="2-106">Mitooma</option>
+                                    <option value="4-115">Omoro</option>
+                                    <option value="1-125">Kassanda</option>
+                                    <option value="4-001">Apac</option>
+                                    <option value="2-034">Ntungamo</option>
+                                    <option value="2-004">Bushenyi</option>
+                                    <option value="3-043">Katakwi</option>
+                                    <option value="2-046">Kamwenge</option>
+                                    <option value="3-051">Sironko</option>
+                                    <option value="3-054">Kaberamaido</option>
+                                    <option value="4-056">Nakapiripirit</option>
+                                    <option value="3-058">Amuria</option>
+                                    <option value="3-060">Butaleja</option>
+                                    <option value="1-068">Mityana</option>
+                                    <option value="3-072">Budaka</option>
+                                    <option value="4-077">Maracha</option>
+                                    <option value="3-008">Jinja</option>
+                                    <option value="4-086">Otuke</option>
+                                    <option value="3-089">Bulambuli</option>
+                                    <option value="2-092">Kiryandongo</option>
+                                    <option value="2-096">Ntoroko</option>
+                                    <option value="4-103">Kole</option>
+                                    <option value="1-105">Lwengo</option>
+                                    <option value="2-132">Kitagwenda</option>
+                                    <option value="2-015">Kasese</option>
+                                    <option value="4-020">Kotido</option>
+                                    <option value="1-024">Masaka</option>
+                                    <option value="2-027">Mbarara</option>
+                                    <option value="3-035">Pallisa</option>
+                                    <option value="4-005">Gulu</option>
+                                    <option value="2-065">Kiruhura</option>
+                                    <option value="1-069">Nakaseke</option>
+                                    <option value="1-093">Kyankwanzi</option>
+                                    <option value="3-094">Luuka</option>
+                                    <option value="3-097">Serere</option>
+                                    <option value="1-099">Butambala</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+                <svg id="district-hist">
+                    <g>
+                        <g class="xaxis"></g>
+                        <g class="yaxis"></g>
+                    </g>
+                </svg>
+            </div>
+            <div class="col-6">
+                <h4 class="my-2">Trendline chart</h4>
+                <h6 class="text-center my-2">Trendline chart for presidential elections by party %.</h6>
+                <p class="text-justify my-2">
+                    Some of the parties have only run for a few elections while others like NUP have only run in
+                    one.<br>
+                </p>
+                <ul>
+                    Ofnote are:
+                    <li>FDC (skyblue) general decline.</li>
+                    <li>NRM (yellow) general flat-line (althought there is recent decline).</li>
+                    <li>Emergence of NUP(crimson) in 2021.</li>
+                </ul>
+                <svg id="trend-chart">
+                    <g>
+                        <g class="xaxis"></g>
+                        <g class="yaxis"></g>
+                    </g>
+                </svg>
+            </div>
+        </div>
+        <div class="mt-1">
+            <h4>Presidential Vs Parliamentary (2021)</h4>
+            <div class="d-flex">
+                <div class="col-7">
+                    <nav>
+                        <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                            <a class="nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab"
+                                aria-controls="nav-home" aria-selected="true">NRM</a>
+                            <a class="nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab"
+                                aria-controls="nav-profile" aria-selected="false">NUP</a>
+                            <a class="nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab"
+                                aria-controls="nav-contact" aria-selected="false">INDEPENDENT</a>
+                        </div>
+                    </nav>
+                    <div class="tab-content" id="nav-tabContent">
+                        <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+                            <div id="nrm_scatter" class="bg-light"></div>
+                        </div>
+                        <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+                            <div id="nup_scatter" class="bg-light"></div>
+                        </div>
+                        <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
+                            <div id="independent_scatter" class="bg-light"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-5">
+                    <h4>Comments</h4>
+                    <p>
+                        In general, districts that voted for a particular party in the presidential 
+                        election voted in a similar manner at the Parliamentary.
+                        There were some missing results from a few districts and most notably the parties did not run in 
+                        every district at the parliamentary level.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </main>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-dropdown/2.0.3/jquery.dropdown.min.js"
+        integrity="sha512-a1HFA1NIciHH1JtCbf7DS4zAK6FxUsmnXSIEfPm75d3vgPVfaVeVQbKcX7iqqvyp4kTUtqWB+Z7/4S8QhIqXbw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://d3js.org/d3.v6.js"></script>
+    <script src="js/hist_plot.js"></script>
+    <script src="js/trend_plot.js"></script>
+    <script src="js/scatter_plot.js"></script>
+    <script>
+        drawHist('1-012');
+        drawTrend();
+        drawScatter({color:"red",target:"nrm_scatter",url:"nrm"});
+        drawScatter({color:"red",target:"nup_scatter",url:"nup"});
+        drawScatter({color:"red",target:"independent_scatter",url:"independent"});
+        $("#district").on("change", (e) => {
+            drawHist(e.target.value);
+        });
+
+    </script>
+</body>
+
+</html>
